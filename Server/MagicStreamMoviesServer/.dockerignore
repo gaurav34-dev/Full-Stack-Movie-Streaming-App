@@ -1,0 +1,8 @@
+*.log
+*.tmp
+node_modules
+bin
+dist
+.env
+.vscode
+/.git
