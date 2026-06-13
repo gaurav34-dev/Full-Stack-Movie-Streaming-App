@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Vite / Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Environment files
+.env
+**/.env
+
+# Docker
+docker-compose.override.yml
