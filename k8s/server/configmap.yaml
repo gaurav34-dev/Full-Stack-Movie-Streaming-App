@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server-config
+  namespace: default
+data:
+  DATABASE_NAME: "magicstreamdb"
+  ALLOWED_ORIGINS: "http://localhost"
+  RECOMMENDED_MOVIE_LIMIT: "5"
+  BASE_PROMPT_TEMPLATE: "Return a response using one of these words: {rankings}.The response should be a single word and should not contain any other text.The response should be based on the following review:"
