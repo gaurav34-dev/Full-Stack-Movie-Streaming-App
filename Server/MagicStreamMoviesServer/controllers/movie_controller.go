@@ -35,10 +35,11 @@ func GetMovies(client *mongo.Client) gin.HandlerFunc {
 
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch movies."})
+			return
 		}
 		defer cursor.Close(ctx)
 
-		var movies []models.Movie
+		movies := make([]models.Movie, 0)
 
 		if err = cursor.All(ctx, &movies); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode movies."})
@@ -236,7 +237,7 @@ func GetReviewRanking(admin_review string, client *mongo.Client, c *gin.Context)
 }
 
 func GetRankings(client *mongo.Client, c *gin.Context) ([]models.Ranking, error) {
-	var rankings []models.Ranking
+	rankings := make([]models.Ranking, 0)
 
 	var ctx, cancel = context.WithTimeout(c, 100*time.Second)
 	defer cancel()
@@ -381,7 +382,7 @@ func GetGenres(client *mongo.Client) gin.HandlerFunc {
 		}
 		defer cursor.Close(ctx)
 
-		var genres []models.Genre
+		genres := make([]models.Genre, 0)
 		if err := cursor.All(ctx, &genres); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
